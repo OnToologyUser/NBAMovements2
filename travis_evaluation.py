@@ -64,6 +64,8 @@ def main():
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
 	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	  	print 'FFFFLLL'
+	  	print flag
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
 	    	
