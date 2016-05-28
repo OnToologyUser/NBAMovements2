@@ -53,9 +53,9 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	print 's'
-	    	print s
 	    	flag, body = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	  	print 'flag'
+	  	print flag
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', body , labels = ['Acceptance test bug'])     	
 	    	
@@ -120,9 +120,6 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
-    	   		print i 
-    	   		print os.path.splitext(os.path.basename(file))[0].split("_")[1]
-    	   		print s
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
     	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
@@ -145,6 +142,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
 
         #check if the types are the same that the user expected
         for result in list_results_query: 
+        	aux = False
         	j = 0
         	list_tags = []
            	for elem in result: 
@@ -159,15 +157,16 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   				error_list.append("type")
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
-    	   			flag = True
+    	   			aux = True
     	   			
     	   		j+=1 
-    		if flag == True:
+    		if aux == True:
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
 	  		break
 	#if there are errors
 	#if len(error_list) > 0:
  	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
+ 	print flag
  	return s, flag
      
 ##Function to create issues labels in github
