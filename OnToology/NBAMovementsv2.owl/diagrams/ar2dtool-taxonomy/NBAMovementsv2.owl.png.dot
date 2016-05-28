@@ -1,0 +1,25 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "http://www.w3.org/2006/time#DateTimeInterval" "http://schema.org/AdministrativeArea" "base:Team" "http://purl.org/linked-data/cube#DataSet" "http://schema.org/CivicStructure" "base:Coach" "http://schema.org/SportsEvent" "http://www.w3.org/2006/time#ProperInterval" "http://schema.org/SportsTeam" "http://schema.org/State" "http://www.w3.org/2006/time#Interval" "http://schema.org/City" "foaf:Person" "base:Player" "base:Quarter" "http://schema.org/StadiumOrArena" "base:Match" "http://purl.org/linked-data/cube#Observation" "base:Movement" "base:Conference" ; /*classes style*/
+	"http://schema.org/CivicStructure" -> "http://schema.org/Place" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/SportsTeam" -> "http://schema.org/Organization" [ label = "rdfs:subClassOf" ];
+	"http://www.w3.org/2006/time#DateTimeInterval" -> "http://www.w3.org/2006/time#ProperInterval" [ label = "rdfs:subClassOf" ];
+	"base:Quarter" -> "http://schema.org/SportsEvent" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/StadiumOrArena" -> "http://schema.org/CivicStructure" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/State" -> "http://schema.org/AdministrativeArea" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/City" -> "http://schema.org/AdministrativeArea" [ label = "rdfs:subClassOf" ];
+	"foaf:Person" -> "foaf:Agent" [ label = "rdfs:subClassOf" ];
+	"base:Conference" -> "http://schema.org/Place" [ label = "rdfs:subClassOf" ];
+	"http://purl.org/linked-data/cube#DataSet" -> "http://purl.org/linked-data/cube#Attachable" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/SportsEvent" -> "http://schema.org/Event" [ label = "rdfs:subClassOf" ];
+	"base:Match" -> "http://schema.org/SportsEvent" [ label = "rdfs:subClassOf" ];
+	"http://purl.org/linked-data/cube#Observation" -> "http://purl.org/linked-data/cube#Attachable" [ label = "rdfs:subClassOf" ];
+	"base:Player" -> "foaf:Person" [ label = "rdfs:subClassOf" ];
+	"http://www.w3.org/2006/time#ProperInterval" -> "http://www.w3.org/2006/time#Interval" [ label = "rdfs:subClassOf" ];
+	"base:Movement" -> "http://schema.org/SportsEvent" [ label = "rdfs:subClassOf" ];
+	"http://schema.org/AdministrativeArea" -> "http://schema.org/Place" [ label = "rdfs:subClassOf" ];
+	"base:Team" -> "http://schema.org/SportsTeam" [ label = "rdfs:subClassOf" ];
+	"base:Coach" -> "foaf:Person" [ label = "rdfs:subClassOf" ];
+
+}
