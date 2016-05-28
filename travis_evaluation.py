@@ -37,6 +37,8 @@ def main():
 	  for file in list_of_files:
 	    #Reading the results given by the user
 	    results_query, num_res,type_res,list_results_user = read_query(file)
+	    print 'something'
+	    print num_res
 	    results_query = results_query.toxml()
 	    list_elements_results = []
 	    root = ElementTree.fromstring(results_query)
