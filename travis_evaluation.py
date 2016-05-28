@@ -22,10 +22,13 @@ def main():
 	  ###Acceptance test
 	  print 'Starting acceptance test...'
 	  list_of_files=[]
-	  for root, dirnames, filenames in os.walk('.'):
+	  for root, dirnames, filenames in os.walk('*'):
     		for filename in fnmatch.filter(filenames, '*.rq'):
         		list_of_files.append(os.path.join(root, filename))
+          
 	  #list_of_files = glob.glob('./*.rq',recursive=True)
+	  print 'list of files'
+	  print list_of_files
 	  close_old_acc_issues_in_github(repo)
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
