@@ -52,13 +52,14 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	    	flag, s = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	  if flag == True:
+	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
 	    	
-	    	
-	    ###Unit test
-	    ont_files = glob.glob('./*.owl')
-	    print 'Starting unit test with OOPS!...'
-	    for file in ont_files:
+	  ###Unit test
+	  ont_files = glob.glob('./*.owl')
+	  print 'Starting unit test with OOPS!...'
+	  for file in ont_files:
 		    f = open(file, 'r')
 		    ont = f.read()
 		    issues_s = get_pitfalls(ont)
@@ -159,8 +160,9 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
 	  		break
 	#if there are errors
-	if len(error_list) > 0:
- 		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     
+	#if len(error_list) > 0:
+ 	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
+ 	return s, flag
      
 ##Function to create issues labels in github
 
