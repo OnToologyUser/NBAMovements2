@@ -27,24 +27,24 @@ def main():
 	  i = 0
 	  for file in list_of_files:
 	    #Reading the results given by the user
-	    results, num_res,type_res,list_results_user = read_query(file)
-	    results = results.toxml()
+	    results_query, num_res,type_res,list_results_user = read_query(file)
+	    results_query = results_query.toxml()
 	    list_elements_results = []
-	    root = ElementTree.fromstring(results)
+	    root = ElementTree.fromstring(results_query)
 	    #Results obtained by the system
-	    list_results = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
+	    list_results_query = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
 	    # for "ask" queries. The result obtained is only a boolean
-	    if not list_results:
+	    if not list_results_query:
 	    	for child in root:
 	    		if child.text is not None: 
 	    			list_elements_results.append(child.text)
 	    
 	    list_aux = []
-	    for result in list_results:
+	    for result in list_results_query:
 	    		list_aux = []
-	    		el = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
-	    		for element in el:
-	    			list_aux.append(list(element.iter())[1].text)
+	    		binds = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
+	    		for bind in binds:
+	    			list_aux.append(list(bind.iter())[1].text)
 	    		list_elements_results.append(list_aux)
 	    #Checking the results obtained by the system 
 	    if not list_elements_results:
@@ -52,7 +52,7 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results,i,s,repo)
+	    	checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
 	    	
 	    	
 	    ###Unit test
@@ -66,8 +66,6 @@ def main():
 		    nicer_oops_output(issues_s,file,repo)
 	    
   
-
- 		
 ##Function to read the cqs and the results given by the user
 
 def read_query(req_file):
@@ -75,10 +73,9 @@ def read_query(req_file):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
     query = query_c.split('#Results')
-    sparql.setQuery(query[0])
+    #Reading results
     query_aux = query[1].split('#Type of the results')
-    num_res = query_aux[0].replace('#Number of results','')
-    num_res = num_res.replace("\n","")
+    num_res = query_aux[0].replace('#Number of results','').replace("\n","")
     type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
     results_user = query_aux[1].split('#List of results')[1]
@@ -88,7 +85,8 @@ def read_query(req_file):
     	if element != '':
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
-    	
+    #Executing query
+    sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
@@ -96,7 +94,7 @@ def read_query(req_file):
     
 ##Function to check if the results obtained by the system are correct
  
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results,i,s,repo):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results_query,i,s,repo):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -123,15 +121,12 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	 	 	flag = True
     	 	
         #check if the user examples are contained in the results 
-        inside = False
+        isinside = False
         for result in list_results_user:
-             		for list_elem in list_elements_results:
-             			print list_elem
-             			print result
-        			if all(x in result for x in list_elem):
-					inside = True
-			print inside
-    	   		if inside == False:
+             		for elem in list_elements_results:
+        			if all(x in result for x in elem):
+					isinside = True
+    	   		if isinside == False:
     	   			if len(error_list) == 0:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
@@ -142,17 +137,17 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     				break
 
         #check if the types are the same that the user expected
-        for result_c in list_results: #list_results
+        for result in list_results_query: 
         	j = 0
         	list_tags = []
-           	for result in result_c: 
-           		tag = list(result.iter())[1].tag
-        		attrib = list(result.iter())[1].attrib
+           	for elem in result: 
+           		tag = list(elem.iter())[1].tag
+        		attrib = list(elem.iter())[1].attrib
         		list_tags.append(tag)
         		if len(attrib) > 0:
         			attrib = attrib.values()[0]
         		options = [tag, attrib]
-        		if not any(type_res[j]  in op for op in options ):
+        		if not any(type_res[j]  in op for op in options):
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
     	   				i += 1
@@ -163,6 +158,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     		if flag == True:
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
 	  		break
+	#if there are errors
 	if len(error_list) > 0:
  		repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     
      
@@ -198,7 +194,6 @@ def create_labels(repo):
       flag_critical = True
     elif label.name == "Minor":
       flag_minor = True
-      
       
    if flag_acc == False:  
     repo.create_label("Acceptance test bug", "F50511")
