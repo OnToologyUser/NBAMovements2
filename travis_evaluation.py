@@ -52,7 +52,7 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
 	    	
@@ -163,11 +163,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
 	#if there are errors
 	#if len(error_list) > 0:
  	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
- 	print 'final flag'
- 	print flag
- 	print 'final s'
- 	print s
- 	return flag, s
+ 	return flag, s,i
      
 ##Function to create issues labels in github
 
