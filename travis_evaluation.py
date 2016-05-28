@@ -20,7 +20,7 @@ def main():
 	  
 	  ###Acceptance test
 	  print 'Starting acceptance test...'
-	  list_of_files = glob.glob('./*.rq')
+	  list_of_files = glob.glob('./*.rq',recursive=True)
 	  close_old_acc_issues_in_github(repo)
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
