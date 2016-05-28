@@ -24,6 +24,7 @@ def main():
 	  close_old_acc_issues_in_github(repo)
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
+	  print s
 	  i = 0
 	  for file in list_of_files:
 	    #Reading the results given by the user
@@ -52,9 +53,11 @@ def main():
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
 	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
+	    	print 's'
+	    	print s
+	    	flag, body = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
 	  if flag == True:
-	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
+	  	repo.create_issue('Acceptance test notification', body , labels = ['Acceptance test bug'])     	
 	    	
 	  ###Unit test
 	  ont_files = glob.glob('./*.owl')
