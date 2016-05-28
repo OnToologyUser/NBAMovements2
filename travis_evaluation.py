@@ -22,7 +22,7 @@ def main():
 	  ###Acceptance test
 	  print 'Starting acceptance test...'
 	  list_of_files=[]
-	  for root, dirnames, filenames in os.walk('*'):
+	  for root, dirnames, filenames in os.walk('./'):
     		for filename in fnmatch.filter(filenames, '*.rq'):
         		list_of_files.append(os.path.join(root, filename))
           
@@ -33,6 +33,7 @@ def main():
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
 	  i = 0
+	  flag = False
 	  for file in list_of_files:
 	    #Reading the results given by the user
 	    results_query, num_res,type_res,list_results_user = read_query(file)
