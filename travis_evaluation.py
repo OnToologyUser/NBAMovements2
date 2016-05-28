@@ -1,5 +1,6 @@
 from github import Github
 import os
+import fnmatch
 from SPARQLWrapper import SPARQLWrapper, JSON, XML, RDF
 import glob
 import requests
@@ -20,7 +21,10 @@ def main():
 	  
 	  ###Acceptance test
 	  print 'Starting acceptance test...'
-	  list_of_files = glob.glob('./*.rq',recursive=True)
+	  for root, dirnames, filenames in os.walk('.'):
+    		for filename in fnmatch.filter(filenames, '*.rq'):
+        		list_of_files.append(os.path.join(root, filename))
+	  #list_of_files = glob.glob('./*.rq',recursive=True)
 	  close_old_acc_issues_in_github(repo)
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
