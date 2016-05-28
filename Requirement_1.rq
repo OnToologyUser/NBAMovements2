@@ -1,0 +1,17 @@
+
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?subject ?label
+WHERE { ?subject rdfs:label ?label } LIMIT 5
+
+        
+#Results
+#Number of results
+ 5
+#Type of the results
+uri,number
+#List of results
+http://www.w3.org/2001/XMLSchema#anyURI,xsd:anyURI
+
+
+
