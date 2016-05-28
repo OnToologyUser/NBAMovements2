@@ -146,8 +146,8 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
    	   					error_list.append("list")
       				s += '    - The ontology did not return the results that the user expected. Expected: ['+', '.join(result)
-      				
       				s+='] in the list of results.\n'
+      				flag = True
     				break
 
         #check if the types are the same that the user expected
@@ -171,6 +171,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   			
     	   		j+=1 
     		if aux == True:
+    			flag = True
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
 	  		break
 	#if there are errors
