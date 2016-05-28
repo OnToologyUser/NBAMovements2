@@ -166,8 +166,11 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
 	#if there are errors
 	#if len(error_list) > 0:
  	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
+ 	print 'final flag'
  	print flag
- 	return s, flag
+ 	print 'final s'
+ 	print s
+ 	return flag, s
      
 ##Function to create issues labels in github
 
