@@ -1,0 +1,13 @@
+PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+SELECT ?name
+WHERE {
+    ?person foaf:name ?name .
+}LIMIT 5
+
+#Results
+#Number of results
+ 4
+#Type of the results
+literal
+#List of results
+&pizza
