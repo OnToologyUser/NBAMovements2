@@ -8,4 +8,4 @@ WHERE { ?subject rdfs:label ?label } LIMIT 5
 #Type of the results
 uri, literal
 #List of results
-http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI
+http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI2
