@@ -96,8 +96,10 @@ def read_query(req_file):
     results_user = query_aux[1].split('#List of results')[1]
 
     results_user_prior_split = results_user.split('#Priority')
-    
-    if results_user_prior_split is not None:
+    print '======================'
+    print results_user_prior_split
+    print '================='
+    if results_user_prior_split is not False:
 	results_user = results_user_prior_split[0]
         priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
         
