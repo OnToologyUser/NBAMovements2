@@ -36,9 +36,8 @@ def main():
 	  flag = False
 	  for file in list_of_files:
 	    #Reading the results given by the user
-	    results_query, num_res,type_res,list_results_user = read_query(file)
-	    print 'something'
-	    print num_res
+	    results_query, num_res,type_res,list_results_user,priority = read_query(file)
+
 	    results_query = results_query.toxml()
 	    list_elements_results = []
 	    root = ElementTree.fromstring(results_query)
@@ -60,12 +59,15 @@ def main():
 	    #Checking the results obtained by the system 
 	    if not list_elements_results:
 	    	i += 1
-	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'\n'
-	    	repo.create_issue('Acceptance test notification', 'The ontology created did not support the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1] , labels = ['Acceptance test bug'])
+	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+	    	if priority is not None:
+	    		s +='. Priority of the requirement: ' + priority +'.\n'
+	    	else:
+	    		s+= '\n'
+	    	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,i,s,repo)
-	  	print 'FFFFLLL'
-	  	print flag
+	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,priority,i,s,repo)
+
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
 	    	
@@ -92,23 +94,25 @@ def read_query(req_file):
     num_res = query_aux[0].replace('#Number of results','').replace("\n","")
     type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
-    results_user = query_aux[1].split('#List of results')[1]
+    results_user_prior = query_aux[1].split('#List of results')[1]
+    results_user = results_user_prior.split('#Priority')[0]
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
     	if element != '':
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
+    priority  = results_user_prior.split('#Priority')[1].replace(" ","").replace('\n','')
     #Executing query
     sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    return results, num_res,list_type_res,list_aux
+    return results, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
  
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results_query,i,s,repo):
+def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results_query,priority,i,s,repo):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -116,21 +120,34 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     		if len(list_elements_results) < int(num_res.replace('>','')):
     			error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+    		 	if priority is not None:
+	    			s +='. Priority of the requirement: ' + priority +'.\n'
+	    		else:
+	    			s+= '\n'
+    		 	
     		 	s += "    - The ontology return fewer results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"    		 
     		 	flag = True
     	elif "<" in num_res:
     		if len(list_elements_results) > int(num_res.replace('<','')):
     			error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    		 	s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+    	 	 	if priority is not None:
+	    			s +='. Priority of the requirement: ' + priority +'.\n'
+	    		else:
+	    			s+= '\n'
     	 	 	flag = True
     	 	 	s += "    - The ontology return more results than expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	else:
     		 if len(list_elements_results) != int(num_res.replace('=','')):
     		 	error_list.append("len")
     	   		i += 1
-    		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+    	 	 	if priority is not None:
+	    			s +='. Priority of the requirement: ' + priority +'.\n'
+	    		else:
+	    			s+= '\n'
     	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
     	 	
@@ -143,7 +160,11 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   		if isinside == False:
     	   			if len(error_list) == 0:
     	   					i += 1
-    	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+   	   					if priority is not None:
+	    						s +='. Priority of the requirement: ' + priority +'.\n'
+	    					else:
+	    						s+= '.\n'
    	   					error_list.append("list")
       				s += '    - The ontology did not return the results that the user expected. Expected: ['+', '.join(result)
       				s+='] in the list of results.\n'
@@ -166,7 +187,12 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
     	   				i += 1
-    	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]+'.\n'
+    	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
+    	   				if priority is not None:
+	    					s +='. Priority of the requirement: ' + priority +'.\n'
+	    				else:
+	    					s+= '.\n'
+    	   		
     	   			aux = True
     	   			
     	   		j+=1 
