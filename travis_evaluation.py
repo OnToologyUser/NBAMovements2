@@ -97,9 +97,10 @@ def read_query(req_file):
 
     results_user_prior_split = results_user.split('#Priority')
     print '======================'
-    print results_user_prior_split[0]
+    print results_user_prior_split[0].replace(" ","").replace('\n','')
     print '================='
     if results_user_prior_split[0].replace(" ","").replace('\n','') is not 'false':
+    	print 'entro'
 	results_user = results_user_prior_split[0]
         priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
         
