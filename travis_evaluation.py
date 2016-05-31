@@ -94,31 +94,23 @@ def read_query(req_file):
     type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
     results_user = query_aux[1].split('#List of results')[1]
-
     results_user_prior_split = results_user.split('#Priority')
-    print '======================'
-    print results_user_prior_split[0].replace(" ","").replace('\n','')
-    print '================='
+    #if the requirement has priority
     if results_user_prior_split[0].replace(" ","").replace('\n','') != 'false':
-    	print 'entro'
 	results_user = results_user_prior_split[0]
         priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
-        
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
     	if element != '':
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
-    
-   
-
+ 
     #Executing query
     sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    print 'fin'
     return results, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
