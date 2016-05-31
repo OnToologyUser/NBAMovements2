@@ -58,7 +58,7 @@ def main():
 	    if not list_elements_results:
 	    	i += 1
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-	    	if priority is not None:
+	    	if priority != 0:
 	    		s +='. Priority of the requirement: ' + priority +'.\n'
 	    	else:
 	    		s+= '\n'
@@ -83,6 +83,7 @@ def main():
 ##Function to read the cqs and the results given by the user
 
 def read_query(req_file):
+    priority = 0
     req = open(req_file, 'r')
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     query_c =  req.read()
@@ -92,23 +93,23 @@ def read_query(req_file):
     num_res = query_aux[0].replace('#Number of results','').replace("\n","")
     type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
-    results_user_prior = query_aux[1].split('#List of results')[1]
-    print "results_user_prior"
-    print results_user_prior
-    results_user_prior_split = results_user_prior.split('#Priority')
-    results_user = results_user_prior_split[0]
-    print '=================='
-    print results_user
-    print '================='
+    results_user = query_aux[1].split('#List of results')[1]
+
+    results_user_prior_split = results_user.split('#Priority')
+    
+    if results_user_prior_split is not None:
+	results_user = results_user_prior_split[0]
+        priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
+        
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
     	if element != '':
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
-    print 'sale'
-    print results_user_prior_split[1]
-    priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
+    
+   
+
     #Executing query
     sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
@@ -128,7 +129,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-    		 	if priority is not None:
+    		 	if priority != 0:
 	    			s +='. Priority of the requirement: ' + priority +'.\n'
 	    		else:
 	    			s+= '\n'
@@ -140,7 +141,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     			error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-    	 	 	if priority is not None:
+    	 	 	if priority != 0:
 	    			s +='. Priority of the requirement: ' + priority +'.\n'
 	    		else:
 	    			s+= '\n'
@@ -151,7 +152,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     		 	error_list.append("len")
     	   		i += 1
     		 	s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-    	 	 	if priority is not None:
+    	 	 	if priority != 0:
 	    			s +='. Priority of the requirement: ' + priority +'.\n'
 	    		else:
 	    			s+= '\n'
@@ -168,7 +169,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   			if len(error_list) == 0:
     	   					i += 1
     	   					s += "%d. " % (i) + 'Error with the requirement with ID  ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-   	   					if priority is not None:
+   	   					if priority != 0:
 	    						s +='. Priority of the requirement: ' + priority +'.\n'
 	    					else:
 	    						s+= '.\n'
@@ -195,7 +196,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
     	   				error_list.append("type")
     	   				i += 1
     	   				s += "%d. " % (i) + 'Error with the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
-    	   				if priority is not None:
+    	   				if priority != 0:
 	    					s +='. Priority of the requirement: ' + priority +'.\n'
 	    				else:
 	    					s+= '.\n'
