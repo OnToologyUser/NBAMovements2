@@ -9,3 +9,5 @@ WHERE { ?subject rdfs:label ?label } LIMIT 5
 uri, number
 #List of results
 http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI
+#Priority
+1
