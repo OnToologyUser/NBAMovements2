@@ -95,7 +95,9 @@ def read_query(req_file):
     results_user_prior = query_aux[1].split('#List of results')[1]
     results_user_prior_split = results_user_prior.split('#Priority')
     results_user = results_user_prior_split[0]
+    print '=================='
     print results_user
+    print '================='
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
