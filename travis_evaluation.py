@@ -27,8 +27,6 @@ def main():
         		list_of_files.append(os.path.join(root, filename))
           
 	  #list_of_files = glob.glob('./*.rq',recursive=True)
-	  print 'list of files'
-	  print list_of_files
 	  close_old_acc_issues_in_github(repo)
 	   # Each file has a requirement
 	  s = "The ontology created has not passed the acceptance test:\n" 
@@ -95,14 +93,17 @@ def read_query(req_file):
     type_res = query_aux[1].split('#List of results')[0]
     list_type_res = type_res.replace("\n","").replace(" ","").split(",")
     results_user_prior = query_aux[1].split('#List of results')[1]
-    results_user = results_user_prior.split('#Priority')[0]
+    results_user_prior_split = results_user_prior.split('#Priority')
+    results_user = results_user_prior_split[0]
+    print results_user
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
     	if element != '':
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
-    priority  = results_user_prior.split('#Priority')[1].replace(" ","").replace('\n','')
+    print results_user_prior_split[1]
+    priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
     #Executing query
     sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
