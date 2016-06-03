@@ -9,6 +9,7 @@ import myconf
 import rdfxml  as rdfxml
 from xml.etree import ElementTree as ElementTree
 import rdflib
+import types
 
 def main():
 	#GitHub authentication
@@ -117,18 +118,18 @@ def read_query(req_file):
     for row in graph.query(query[0]):
     	row_element = []
     	row_element_type = []
-    	print 'ROW'
-    	print row
-    	if len(row)>2:
-	    	for element in row: 
+    	
+	if type(row)  != types.BooleanType:
+	    for element in row: 
 	    		row_element.append(str(element))
-	    		row_element_type.append(unicode(element))
+	    		row_element_type.append(element)
 	else:
 		row_element.append(str(element))
-	    	row_element_type.append(element)
+	    	row_element_type.append('Boolean')
 	    	
         results_list_type.append(row_element_type)
         results_list.append(row_element)
+        
     print '========'
     print results_list_type
     print '======='
