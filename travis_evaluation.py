@@ -36,26 +36,26 @@ def main():
 	  flag = False
 	  for file in list_of_files:
 	    #Reading the results given by the user
-	    results_query, num_res,type_res,list_results_user,priority = read_query(file)
+	    list_elements_results,list_elements_results_type, num_res,type_res,list_results_user,priority = read_query(file)
 
-	    results_query = results_query.toxml()
-	    list_elements_results = []
-	    root = ElementTree.fromstring(results_query)
+	    #results_query = results_query.toxml()
+	    #list_elements_results = []
+	    #root = ElementTree.fromstring(results_query)
 	    #Results obtained by the system
-	    list_results_query = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
+	    #list_results_query = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
 	    # for "ask" queries. The result obtained is only a boolean
-	    if not list_results_query:
-	    	for child in root:
-	    		if child.text is not None: 
-	    			list_elements_results.append(child.text)
+	    #if not list_results_query:
+	    #	for child in root:
+	    #		if child.text is not None: 
+	    #			list_elements_results.append(child.text)
 	    
-	    list_aux = []
-	    for result in list_results_query:
-	    		list_aux = []
-	    		binds = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
-	    		for bind in binds:
-	    			list_aux.append(list(bind.iter())[1].text)
-	    		list_elements_results.append(list_aux)
+	    #list_aux = []
+	    #for result in list_results_query:
+	    #		list_aux = []
+	    #		binds = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
+	    #		for bind in binds:
+	    #			list_aux.append(list(bind.iter())[1].text)
+	    # 		list_elements_results.append(list_aux)
 	    #Checking the results obtained by the system 
 	    if not list_elements_results:
 	    	i += 1
@@ -66,7 +66,7 @@ def main():
 	    		s+= '\n'
 	    	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_results_user,file,list_results_query,priority,i,s,repo)
+	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,list_results_query,priority,i,s,repo)
 
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
@@ -120,7 +120,7 @@ def read_query(req_file):
     	for element in row: 
     		#row_element.append(element.label)
     		row_element.append(str(element))
-    		row_element_type.append(element.split("(")[0])
+    		row_element_type.append(element)
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
@@ -136,7 +136,7 @@ def read_query(req_file):
     
 ##Function to check if the results obtained by the system are correct
  
-def checking_results(num_res,type_res, list_elements_results, list_results_user,file, list_results_query,priority,i,s,repo):
+def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file, list_results_query,priority,i,s,repo):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -178,7 +178,7 @@ def checking_results(num_res,type_res, list_elements_results, list_results_user,
         #check if the user examples are contained in the results 
         isinside = False
         for result in list_results_user:
-             		for elem in list_elements_results:
+             		for elem in list_elements_results_type:
         			if all(x in result for x in elem):
 					isinside = True
     	   		if isinside == False:
