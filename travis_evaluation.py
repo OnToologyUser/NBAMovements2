@@ -124,16 +124,12 @@ def read_query(req_file):
 	    		row_element.append(str(element))
 	    		row_element_type.append(element)
 	else:
-		row_element.append(str(element))
+		row_element.append(row)
 	    	row_element_type.append('Boolean')
 	    	
         results_list_type.append(row_element_type)
         results_list.append(row_element)
-        
-    print '========'
-    print results_list_type
-    print '======='
-    print results_list
+      
     #Executing query
    # sparql.setQuery(query[0])
    # sparql.setReturnFormat(XML)
@@ -184,8 +180,11 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	 	
         #check if the user examples are contained in the results 
         isinside = False
+        print '-----SAMPLEES-----'
         for result in list_results_user:
+        	print result
              		for elem in list_elements_results_type:
+             			print elem
         			if all(x in result for x in elem):
 					isinside = True
     	   		if isinside == False:
@@ -203,13 +202,17 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     				break
 
         #check if the types are the same that the user expected
+        print '---TYPES----'
         for result in list_elements_results_type: 
         	aux = False
         	j = 0
         	#list_tags = []
+        	print 
            	for elem in result: 
+           		print elem
            		#tag = list(elem.iter())[1].tag
         		#list_tags.append(tag)
+        		print type_res[j]
         		if not type_res[j]  in elem:
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
