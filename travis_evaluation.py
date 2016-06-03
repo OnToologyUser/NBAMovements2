@@ -111,7 +111,7 @@ def read_query(req_file):
     
     graph = rdflib.Graph()
     graph.parse('PuntosDeAlumbrado.owl') 
-    results = graph.query(query[0]).serialize('xml')
+    results = graph.query(query[0]).serialize('python')
     # results_list = []
     # results_list_type = []
     # for row in graph.query(query[0]):
