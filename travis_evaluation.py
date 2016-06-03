@@ -117,6 +117,7 @@ def read_query(req_file):
     for row in graph.query(query[0]):
     	row_element = []
     	row_element_type = []
+    	print row
     	for element in row: 
     		
     		#row_element.append(element.label)
