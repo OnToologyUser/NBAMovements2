@@ -124,9 +124,9 @@ def read_query(req_file):
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
-    print esults_list_type
+    print results_list_type
     print '======='
-    print esults_list
+    print results_list
     #Executing query
    # sparql.setQuery(query[0])
    # sparql.setReturnFormat(XML)
