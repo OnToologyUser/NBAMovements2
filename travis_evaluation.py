@@ -118,12 +118,15 @@ def read_query(req_file):
     	row_element = []
     	row_element_type = []
     	print row
-    	for element in row: 
-    		
-    		#row_element.append(element.label)
-    		row_element.append(str(element.toPython()))
-    	
-    		row_element_type.append(element.n3())
+    	if len(row)>2:
+	    	for element in row: 
+	    		#row_element.append(element.label)
+	    		row_element.append(str(element.toPython()))
+	    		row_element_type.append(element.n3())
+	else:
+		row_element.append(str(element.toPython()))
+	    	row_element_type.append(element.n3())
+	    	
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
