@@ -113,8 +113,8 @@ def read_query(req_file):
     results = sparql.query().convert()
     req.close()
     matches = re.search("\w+\.owl", query[0])
-    line = matches.group(1) + '\n'
-    print line
+    
+    print matches
     return results, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
