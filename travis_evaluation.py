@@ -120,11 +120,10 @@ def read_query(req_file):
     	for element in row: 
     		#row_element.append(element.label)
     		row_element.append(str(element.toPython()))
-    		type_element = re.sub('(\'.*\')','',element)
     		print '***************'
     		print type_element
     		print '***************'
-    		row_element_type.append(element)
+    		row_element_type.append(element.toPython())
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
