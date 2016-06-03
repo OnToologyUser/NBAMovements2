@@ -111,21 +111,21 @@ def read_query(req_file):
     
     graph = rdflib.Graph()
     graph.parse('PuntosDeAlumbrado.owl') 
-    results = graph.query(query[0])
-    results_list = []
-    results_list_type = []
-    for row in graph.query(query[0]):
-    	row_element = []
-    	row_element_type = []
- 	for element in row: 
- 		row_element.append(element.label())
- 		row_element_type.append(element.qname())
-        results_list_type.append(row_element_type)
-        results_list.append(row_element)
+    results = graph.query(query[0]).serialize('xml')
+    # results_list = []
+    # results_list_type = []
+    # for row in graph.query(query[0]):
+    #	row_element = []
+    #	row_element_type = []
+    #	for element in row: 
+    #		row_element.append(element.label())
+    #		row_element_type.append(element.qname())
+    #   results_list_type.append(row_element_type)
+    #    results_list.append(row_element)
     print '========'
-    print results_list
+    print results
     print '======='
-    print results_list_type 
+    print list(results) 
     #Executing query
    # sparql.setQuery(query[0])
    # sparql.setReturnFormat(XML)
