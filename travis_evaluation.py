@@ -122,27 +122,13 @@ def read_query(req_file):
 	if type(row)  != types.BooleanType:
 	    for element in row: 
 	    		row_element.append(str(element))
-	    		print 'check'
-	    		print type(element).__name__
-	    		if type(element).__name__ == 'URIRef':
-	    				row_element_type.append('uri')
-	    		elif type(element).__name__ == 'Literal':
-	    			row_element_type.append('literal')
-	    		elif type(element).__name__ == 'BNode':
-	    			row_element_type.append('BNode')
-	    		else:
-	    			row_element_type.append('none')
+	    		row_element_type.append(type(element).__name__)
 	else:
 		row_element.append(row)
 	    	row_element_type.append('Boolean')
 	    	
         results_list_type.append(row_element_type)
         results_list.append(row_element)
-      
-    #Executing query
-   # sparql.setQuery(query[0])
-   # sparql.setReturnFormat(XML)
-   # results = sparql.query().convert()
     req.close()
     return results_list,results_list_type, num_res,list_type_res,list_aux,priority
     
