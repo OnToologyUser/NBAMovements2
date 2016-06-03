@@ -112,19 +112,15 @@ def read_query(req_file):
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    matches = re.search("\w+\.owl", query[0])
     
-    
-    p = re.compile('\w+\.owl')
+    result = re.match('\w+\.owl', query[0])
 
-    m = p.search(query[0])
-    # search() returns a Match object with information about what was matched
-    if m:
-       matches = m.group(1)
+    if result:
+       print 'RESULTS'
+       print result
     else:
       raise Exception(' not found')
     
-    print matches
     return results, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
