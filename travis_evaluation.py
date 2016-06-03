@@ -124,12 +124,13 @@ def read_query(req_file):
 	    		row_element.append(str(element))
 	    		print 'check'
 	    		print element
-	    		print unicode(element)
 	    		print type(element)
-	    		if 'URI' in row:
+	    		if 'URIRef' in type(element):
 	    			row_element_type.append('uri')
-	    		elif 'Literal' in row:
+	    		elif 'Literal' in type(element):
 	    			row_element_type.append('literal')
+	    		elif 'BNode' in type(element):
+	    			row_element_type.append('BNode')
 	    		else:
 	    			row_element_type.append('none')
 	else:
