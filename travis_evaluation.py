@@ -121,7 +121,7 @@ def read_query(req_file):
     		#row_element.append(element.label)
     		row_element.append(str(element.toPython()))
     	
-    		row_element_type.append(element.toPython())
+    		row_element_type.append(element.datatype)
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
@@ -219,7 +219,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	   		j+=1 
     		if aux == True:
     			flag = True
-	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(list_tags)+"]\n"
+	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(result)+"]\n"
 	  		break
 	#if there are errors
 	#if len(error_list) > 0:
