@@ -123,7 +123,7 @@ def read_query(req_file):
 	    for element in row: 
 	    		row_element.append(str(element))
 	    		print 'check'
-	    		print type(element)
+	    		print type(element).__name__
 	    		if type(element).__name__ == 'rdflib.term.URIRef':
 	    				row_element_type.append('uri')
 	    	
