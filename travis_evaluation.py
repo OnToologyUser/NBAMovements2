@@ -112,17 +112,6 @@ def read_query(req_file):
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    
-    result = re.findall('/\w+\.owl\g', query[0])
-    print result
-    result2 = re.findall('/\w+\g', query[0])
-    print results2
-    if result:
-       print 'RESULTS'
-       print result
-    else:
-      raise Exception(' not found')
-    
     return results, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
