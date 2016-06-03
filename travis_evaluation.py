@@ -66,7 +66,7 @@ def main():
 	    		s+= '\n'
 	    	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,list_results_query,priority,i,s,repo)
+	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,priority,i,s,repo)
 
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
@@ -120,6 +120,11 @@ def read_query(req_file):
     	for element in row: 
     		#row_element.append(element.label)
     		row_element.append(str(element))
+    		print '***************'
+    		print element.split("(")[0]
+    		print element.split("(")[1]
+    		print element.split("(")
+    		print '***************'
     		row_element_type.append(element.split("(")[0])
         results_list_type.append(row_element_type)
         results_list.append(row_element)
@@ -136,7 +141,7 @@ def read_query(req_file):
     
 ##Function to check if the results obtained by the system are correct
  
-def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file, list_results_query,priority,i,s,repo):
+def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file,priority,i,s,repo):
  	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
@@ -196,18 +201,14 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     				break
 
         #check if the types are the same that the user expected
-        for result in list_results_query: 
+        for result in list_elements_results_type: 
         	aux = False
         	j = 0
         	list_tags = []
            	for elem in result: 
-           		tag = list(elem.iter())[1].tag
-        		attrib = list(elem.iter())[1].attrib
+           		#tag = list(elem.iter())[1].tag
         		list_tags.append(tag)
-        		if len(attrib) > 0:
-        			attrib = attrib.values()[0]
-        		options = [tag, attrib]
-        		if not any(type_res[j]  in op for op in options):
+        		if not type_res[j]  in elem:
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
     	   				i += 1
