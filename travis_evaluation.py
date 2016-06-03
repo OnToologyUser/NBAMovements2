@@ -363,7 +363,7 @@ def nicer_oops_output(issues,ont_file,repo):
     num_of_pitfalls = issues.count(pitf_flag)
     num_of_warnings = issues.count(warn_flag)
     #create suggestions issue
-    if num_of_suggestions > 0 or num_pitfalls > 0 :
+    if num_of_suggestions > 0 or num_of_pitfalls > 0 :
      p = " OOPS! has encountered some pitfalls related to " 
     
      nodes = issues.split("====================")
