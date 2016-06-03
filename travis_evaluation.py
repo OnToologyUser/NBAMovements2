@@ -119,12 +119,12 @@ def read_query(req_file):
     	row_element_type = []
     	for element in row: 
     		#row_element.append(element.label)
-    		row_element.append(str(element))
+    		row_element.append(str(element.toPython()))
+    		type_element = re.sub('(\'.*\')','',element)
     		print '***************'
-    		print element.split("(")[0]
-    		print element.split("(")
+    		print type_element
     		print '***************'
-    		row_element_type.append(element.split("(")[0])
+    		row_element_type.append(element)
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
@@ -203,10 +203,10 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
         for result in list_elements_results_type: 
         	aux = False
         	j = 0
-        	list_tags = []
+        	#list_tags = []
            	for elem in result: 
            		#tag = list(elem.iter())[1].tag
-        		list_tags.append(tag)
+        		#list_tags.append(tag)
         		if not type_res[j]  in elem:
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
