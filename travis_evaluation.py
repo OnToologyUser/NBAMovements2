@@ -124,7 +124,7 @@ def read_query(req_file):
 	    		row_element.append(str(element))
 	    		row_element_type.append(element.n3())
 	else:
-		row_element.append(str(element.toPython()))
+		row_element.append(str(element))
 	    	row_element_type.append(element.n3())
 	    	
         results_list_type.append(row_element_type)
