@@ -1,4 +1,5 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mine: <https://raw.githubusercontent.com/albaizq/NBAMovements2/master/PuntosDeAlumbrado.owl>
 SELECT ?subject ?label
 WHERE { ?subject rdfs:label ?label } LIMIT 5
 
