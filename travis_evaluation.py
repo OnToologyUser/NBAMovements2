@@ -59,7 +59,7 @@ def main():
 	    	i += 1
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
 	    	if priority != 0:
-	    		s +='. Priority of the requirement: ' + priority +'.\n'
+	    		s +='. Priority of the requirement: ' + priority +'.\n' 
 	    	else:
 	    		s+= '\n'
 	    	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
