@@ -114,6 +114,16 @@ def read_query(req_file):
     req.close()
     matches = re.search("\w+\.owl", query[0])
     
+    
+    p = re.compile("\w+\.owl", re.flags)
+
+    m = p.search(s)
+    # search() returns a Match object with information about what was matched
+   if m:
+       name = m.group(1)
+   else:
+      raise Exception(' not found')
+    
     print matches
     return results, num_res,list_type_res,list_aux,priority
     
