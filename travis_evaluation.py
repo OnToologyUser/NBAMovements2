@@ -118,7 +118,8 @@ def read_query(req_file):
     	row_element = []
     	row_element_type = []
     	for element in row: 
-    		row_element.append(element.label)
+    		#row_element.append(element.label)
+    		row_element.append(str(element))
     		row_element_type.append(element.split("(")[0])
         results_list_type.append(row_element_type)
         results_list.append(row_element)
