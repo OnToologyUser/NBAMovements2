@@ -1,6 +1,7 @@
 from github import Github
 import os
 import fnmatch
+import re
 from SPARQLWrapper import SPARQLWrapper, JSON, XML, RDF
 import glob
 import requests
