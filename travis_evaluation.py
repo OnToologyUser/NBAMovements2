@@ -113,7 +113,7 @@ def read_query(req_file):
     graph.parse('PuntosDeAlumbrado.owl') 
     result = graph.query(query[0])
     print '========'
-    print result
+    print list(result)
     print '======='
     #Executing query
     sparql.setQuery(query[0])
