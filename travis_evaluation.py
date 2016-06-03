@@ -123,13 +123,12 @@ def read_query(req_file):
 	    for element in row: 
 	    		row_element.append(str(element))
 	    		print 'check'
-	    		print element
 	    		print type(element)
-	    		if 'URIRef' in type(element):
+	    		if "<class 'rdflib.term.URIRef'>" == type(element):
 	    			row_element_type.append('uri')
-	    		elif 'Literal' in type(element):
+	    		elif "<class 'rdflib.term.Literal'>" == type(element):
 	    			row_element_type.append('literal')
-	    		elif 'BNode' in type(element):
+	    		elif "<class 'rdflib.term.BNode'>" == type(element):
 	    			row_element_type.append('BNode')
 	    		else:
 	    			row_element_type.append('none')
