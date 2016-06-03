@@ -117,13 +117,12 @@ def read_query(req_file):
     for row in graph.query(query[0]):
     	row_element = []
     	row_element_type = []
+    	print 'ROW'
     	print row
     	if len(row)>2:
 	    	for element in row: 
-	    		#row_element.append(element.label)
 	    		row_element.append(str(element))
 	    		row_element_type.append(unicode(element))
-	    		print element.qname()
 	else:
 		row_element.append(str(element))
 	    	row_element_type.append(element)
