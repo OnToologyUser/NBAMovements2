@@ -122,6 +122,8 @@ def read_query(req_file):
 	if type(row)  != types.BooleanType:
 	    for element in row: 
 	    		row_element.append(str(element))
+	    		print row
+	    		print row[0]
 	    		if 'URI' in row:
 	    			row_element_type.append('uri')
 	    		elif 'Literal' in row:
