@@ -182,7 +182,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
         isinside = False
         print '-----SAMPLEES-----'
         for result in list_results_user:
-        	print result
+        		print result
              		for elem in list_elements_results_type:
              			print elem
         			if all(x in result for x in elem):
