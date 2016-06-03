@@ -8,6 +8,7 @@ import requests
 import myconf
 import rdfxml  as rdfxml
 from xml.etree import ElementTree as ElementTree
+import rdflib
 
 def main():
 	#GitHub authentication
@@ -107,6 +108,13 @@ def read_query(req_file):
     		element_aux = element.split(",")
     		list_aux.append(element_aux)
  
+    
+    graph = rdflib.Graph()
+    graph.parse('PuntosDeAlumbrado.owl') 
+    result = graph.query(query[0])
+    print '========'
+    print result
+    print '======='
     #Executing query
     sparql.setQuery(query[0])
     sparql.setReturnFormat(XML)
