@@ -112,8 +112,7 @@ def read_query(req_file):
     sparql.setReturnFormat(XML)
     results = sparql.query().convert()
     req.close()
-    print query[0]
-    result = re.match('\w+\.owl', query[0])
+    result = re.match('/\w+\.owl\g', query[0])
 
     if result:
        print 'RESULTS'
