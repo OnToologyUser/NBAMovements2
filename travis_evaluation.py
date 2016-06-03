@@ -122,7 +122,6 @@ def read_query(req_file):
     		row_element.append(str(element))
     		print '***************'
     		print element.split("(")[0]
-    		print element.split("(")[1]
     		print element.split("(")
     		print '***************'
     		row_element_type.append(element.split("(")[0])
