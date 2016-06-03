@@ -122,10 +122,11 @@ def read_query(req_file):
 	    	for element in row: 
 	    		#row_element.append(element.label)
 	    		row_element.append(str(element))
-	    		row_element_type.append(element.n3())
+	    		row_element_type.append(unicode(element))
+	    		print element.qname()
 	else:
 		row_element.append(str(element))
-	    	row_element_type.append(element.n3())
+	    	row_element_type.append(element)
 	    	
         results_list_type.append(row_element_type)
         results_list.append(row_element)
