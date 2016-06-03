@@ -119,9 +119,9 @@ def read_query(req_file):
 
     m = p.search(s)
     # search() returns a Match object with information about what was matched
-   if m:
+    if m:
        name = m.group(1)
-   else:
+    else:
       raise Exception(' not found')
     
     print matches
