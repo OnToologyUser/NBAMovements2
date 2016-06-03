@@ -113,13 +113,19 @@ def read_query(req_file):
     graph.parse('PuntosDeAlumbrado.owl') 
     results = graph.query(query[0])
     results_list = []
+    results_list_type = []
     for row in graph.query(query[0]):
-        print row
-        results_list.append(row)
+    	row_element = []
+    	row_element_type = []
+ 	for element in row: 
+ 		row_element.append(element.label())
+ 		row_element_type.append(element.qname())
+        results_list_type.append(row_element_type)
+        results_list.append(row_element)
     print '========'
-    print list(result)
-    print '======='
     print results_list
+    print '======='
+    print results_list_type 
     #Executing query
    # sparql.setQuery(query[0])
    # sparql.setReturnFormat(XML)
