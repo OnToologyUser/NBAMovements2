@@ -114,7 +114,9 @@ def read_query(req_file):
     req.close()
     
     result = re.findall('/\w+\.owl\g', query[0])
-    print results
+    print result
+    result2 = re.findall('/\w+\g', query[0])
+    print results2
     if result:
        print 'RESULTS'
        print result
