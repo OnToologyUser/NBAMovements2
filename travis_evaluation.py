@@ -121,7 +121,7 @@ def read_query(req_file):
     	if len(row)>2:
 	    	for element in row: 
 	    		#row_element.append(element.label)
-	    		row_element.append(str(element.toPython()))
+	    		row_element.append(str(element))
 	    		row_element_type.append(element.n3())
 	else:
 		row_element.append(str(element.toPython()))
