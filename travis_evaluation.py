@@ -120,7 +120,7 @@ def read_query(req_file):
     	for element in row: 
     		#row_element.append(element.label)
     		row_element.append(str(element))
-    		row_element_type.append(element)
+    		row_element_type.append(element.split("(")[0])
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     print '========'
@@ -132,7 +132,7 @@ def read_query(req_file):
    # sparql.setReturnFormat(XML)
    # results = sparql.query().convert()
     req.close()
-    return results, num_res,list_type_res,list_aux,priority
+    return results_list,results_list_type, num_res,list_type_res,list_aux,priority
     
 ##Function to check if the results obtained by the system are correct
  
