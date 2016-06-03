@@ -115,12 +115,12 @@ def read_query(req_file):
     matches = re.search("\w+\.owl", query[0])
     
     
-    p = re.compile("\w+\.owl", re.flags)
+    p = re.compile('\w+\.owl')
 
-    m = p.search(s)
+    m = p.search(query[0])
     # search() returns a Match object with information about what was matched
     if m:
-       name = m.group(1)
+       matches = m.group(1)
     else:
       raise Exception(' not found')
     
