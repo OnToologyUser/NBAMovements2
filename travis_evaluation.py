@@ -178,12 +178,16 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
     	 	
+    	print 'results_list'
+    	print list_elements_results
+    	print 'results_list_types'
+    	print list_elements_results_type
         #check if the user examples are contained in the results 
         isinside = False
         print '-----SAMPLEES-----'
         for result in list_results_user:
         		print result
-             		for elem in list_elements_results_type:
+             		for elem in list_elements_results:
              			print elem
         			if all(x in result for x in elem):
 					isinside = True
