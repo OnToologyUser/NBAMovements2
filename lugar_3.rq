@@ -2,7 +2,6 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT  ?comment ?label
 WHERE { 
-        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> rdfs:comment ?comment .
         <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> rdfs:label ?label 
      } 
 
