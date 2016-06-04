@@ -535,8 +535,8 @@ def nicer_oops_output(issues,ont_file,repo):
 def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old oops issues'
     for i in repo.get_issues(state='open'):
-    	print 'close'
-        if i.title == ('OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]):
+    	print 'OOPS! Evaluation for ' + os.path.basename(ont_file)
+        if i.title == ('OOPS! Evaluation for ' + os.path.basename(ont_file):
             i.edit(state='closed')
             
 def close_old_acc_issues_in_github(repo):
