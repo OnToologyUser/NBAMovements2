@@ -128,11 +128,11 @@ def read_query(req_file):
 	else:
 		row_element.append(row)
 	    	row_element_type.append('Boolean')
-	print 'sssss'
-	print  results_list
-	print results_list_type
+
         results_list_type.append(row_element_type)
         results_list.append(row_element)
+    print 'sssss'
+    print  results_list
     req.close()
     return results_list,results_list_type, num_res,list_type_res,list_aux,priority
     
@@ -177,10 +177,6 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	 	 	s += "    - The ontology did not return the number of results expected. Expected: "+str(num_res)+ " but was: "+str(len(list_elements_results))+".\n"
     	 	 	flag = True
     	 	
-    	print 'results_list'
-    	print list_elements_results
-    	print 'results_list_types'
-    	print list_elements_results_type
         #check if the user examples are contained in the results 
         isinside = False
         for result in list_results_user:
