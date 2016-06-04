@@ -1,9 +1,8 @@
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  ?subclass  ?label
+SELECT  ?label 
 WHERE { 
-        ?subclass rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> . 
-        ?subClass rdfs:label ?label 
+        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> rdfs:label ?label
      } 
 
 #Results
