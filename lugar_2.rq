@@ -1,5 +1,5 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  ?class ?type 
+SELECT  ?subcl ?type 
 WHERE { <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico> a ?type .
         ?subcl rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico>
      } 
