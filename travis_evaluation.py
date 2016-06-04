@@ -128,7 +128,9 @@ def read_query(req_file):
 	else:
 		row_element.append(row)
 	    	row_element_type.append('Boolean')
-	    	
+	print 'sssss'
+	print  results_list
+	print results_list_type
         results_list_type.append(row_element_type)
         results_list.append(row_element)
     req.close()
@@ -181,11 +183,8 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	print list_elements_results_type
         #check if the user examples are contained in the results 
         isinside = False
-        print '-----SAMPLEES-----'
         for result in list_results_user:
-        		print result
              		for elem in list_elements_results:
-             			print elem
         			if all(x in result for x in elem):
 					isinside = True
     	   		if isinside == False:
@@ -203,14 +202,11 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     				break
 
         #check if the types are the same that the user expected
-        print '---TYPES----'
         for result in list_elements_results_type: 
         	aux = False
         	j = 0
         	#list_tags = []
-        	print 
            	for elem in result: 
-           		print elem
            		#tag = list(elem.iter())[1].tag
         		#list_tags.append(tag)
         		print type_res[j]
@@ -539,6 +535,7 @@ def nicer_oops_output(issues,ont_file,repo):
 def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old oops issues'
     for i in repo.get_issues(state='open'):
+    	print 'close'
         if i.title == ('OOPS! Evaluation for ' + os.path.splitext(os.path.basename(ont_file))[0]):
             i.edit(state='closed')
             
