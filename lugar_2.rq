@@ -1,7 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  ?property ?value
+SELECT  ?subclass ?property ?value
 WHERE { 
-        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico> ?property ?value
+        ?subclass rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico> . 
+        ?subClass ?property ?value
      } 
 
 #Results
