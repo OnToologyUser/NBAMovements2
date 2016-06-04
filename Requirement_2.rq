@@ -1,6 +1,9 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?subject ?label
-WHERE { ?subject rdfs:label ?label } LIMIT 5
+SELECT ?class 
+WHERE { ?class rdfs:label "Lugar de Interés Turístico".
+        ?subclass rdfs:subClassOf ?class 
+
+} 
 
 #Results
 #Number of results
