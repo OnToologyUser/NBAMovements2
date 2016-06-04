@@ -111,7 +111,7 @@ def read_query(req_file):
  
     
     graph = rdflib.Graph()
-    name_file = os.path.splitext(os.path.basename(req_file))[0].split("_")[1] + '.owl'
+    name_file = os.path.splitext(os.path.basename(req_file))[0].split("_")[0] + '.owl'
     print name_file
     graph.parse(name_file) 
     results = graph.query(query[0])
