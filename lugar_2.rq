@@ -1,6 +1,6 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?class ?label
-WHERE { ?class rdfs:label ?label .
+WHERE { ?class rdfs:label "Lugar de Inter\xc3\xa9s Tur\xc3\xadstico" .
 
 } 
 
