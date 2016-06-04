@@ -1,16 +1,18 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  ?subclass ?property ?value
+SELECT  ?subclass ?value ?label ?creator
 WHERE { 
         ?subclass rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico> . 
-        ?subClass ?property ?value
+        ?subClass rdfs:comment ?value
+        ?subClass rdfs:label ?label
+        ?subClass <http://purl.org/dc/elements/1.1/creator> ?creator
      } 
 
 #Results
 #Number of results
  5
 #Type of the results
-uri, number
+uri, literal, literal, literal
 #List of results
-http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI
+http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI, xsd:anyURI, xsd:anyURI
 #Priority
 1
