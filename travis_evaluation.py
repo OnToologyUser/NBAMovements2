@@ -536,7 +536,7 @@ def close_old_oops_issues_in_github(repo, ont_file):
     print 'will close old oops issues'
     for i in repo.get_issues(state='open'):
     	print 'OOPS! Evaluation for ' + os.path.basename(ont_file)
-        if i.title == ('OOPS! Evaluation for ' + os.path.basename(ont_file):
+        if i.title == ('OOPS! Evaluation for ' + os.path.basename(ont_file)):
             i.edit(state='closed')
             
 def close_old_acc_issues_in_github(repo):
