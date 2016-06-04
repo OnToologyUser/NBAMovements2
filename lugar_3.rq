@@ -1,0 +1,17 @@
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT  ?subclass  ?label
+WHERE { 
+        ?subclass rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> . 
+        ?subClass rdfs:label ?label 
+     } 
+
+#Results
+#Number of results
+ > 5
+#Type of the results
+uri, literal, literal, literal
+#List of results
+http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI, xsd:anyURI, xsd:anyURI
+#Priority
+1
