@@ -1,5 +1,7 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-ASK  { ?x <http://www.w3.org/2002/07/owl#ObjectProperty>  ?y }
+SELECT ?x ?y ?z
+
+WHERE{ ?x  ?y ?z}
 #Results
 #Number of results
  1
