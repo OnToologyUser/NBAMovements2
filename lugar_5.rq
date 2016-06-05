@@ -1,15 +1,11 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?subclass ?type
-WHERE { 
-        ?subclass a ?type
-     } 
-
+ASK  { ?x <http://www.w3.org/2002/07/owl#ObjectProperty>  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#tipoAccesibilidad> }
 #Results
 #Number of results
- > 1
+ 1
 #Type of the results
-literal
+boolean
 #List of results
-poblacion
+true
 #Priority
 1
