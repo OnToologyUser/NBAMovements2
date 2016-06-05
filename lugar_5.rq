@@ -1,5 +1,5 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?x ?y ?z
+SELECT DISTINCT ?z
 WHERE {
 {
    ?z rdfs:subClassOf ?y .
@@ -17,10 +17,10 @@ WHERE {
 
 #Results
 #Number of results
- 1
+ >1
 #Type of the results
-boolean
+uri
 #List of results
-poblacion
+http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica 
 #Priority
 1
