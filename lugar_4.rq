@@ -1,7 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?prop ?label
+SELECT   ?label ?class
 WHERE { 
-        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> ?prop ?label .
+        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> rdfs:label ?label .
+        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> rdfs:subClassOf ?class
         
      } 
 
@@ -11,4 +12,4 @@ WHERE {
 #Type of the results
 literal, literal
 #List of results
-poblacion, poblacion
+itinerario, http://schema.org/TouristAttraction
