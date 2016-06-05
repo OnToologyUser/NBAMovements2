@@ -1,7 +1,9 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?x ?y
-
-WHERE{ ?x rdfs:label ?y} 
+SELECT ?x ?label
+WHERE {
+   ?x rdfs:label ?label .
+   FILTER regex(str(?label), "accesible", "i")
+}
 
 #Results
 #Number of results
