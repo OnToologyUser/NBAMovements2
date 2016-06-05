@@ -1,13 +1,12 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?x ?y ?z
+ASK { <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#tipoAccesibilidad> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty>} 
 
-WHERE{ ?x  ?y ?z}
 #Results
 #Number of results
  1
 #Type of the results
 boolean
 #List of results
-true
+poblacion
 #Priority
 1
