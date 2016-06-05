@@ -19,7 +19,7 @@ WHERE {
 #Number of results
  >1
 #Type of the results
-uri
+URIRef
 #List of results
 http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica 
 
