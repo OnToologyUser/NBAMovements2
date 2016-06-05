@@ -1,8 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?label ?type
+SELECT   ?prop ?label
 WHERE { 
-        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> rdfs:label ?label .
-        ?label a ?type
+        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> ?prop ?label .
+        
      } 
 
 #Results
