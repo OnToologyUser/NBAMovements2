@@ -1,8 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?class ?prop ?type
+SELECT   ?class
 WHERE { 
-        ?class rdfs:subClassOf <http://schema.org/TouristAttraction> .
-        ?class ?prop ?type
+        ?class rdfs:label "tipo de accesibilidad" .
+        ?class rdfs:label "accesible" 
      } 
 
 #Results
