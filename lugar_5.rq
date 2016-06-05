@@ -1,8 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT ?x ?y
+SELECT ?x ?y ?z
 WHERE {
 
-   ?x <http://www.w3.org/2002/07/owl#ObjectProperty> ?y 
+   ?x ?y ?z
 
 }
 
