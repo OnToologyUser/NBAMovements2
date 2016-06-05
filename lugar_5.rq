@@ -1,9 +1,18 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?x ?y ?z
 WHERE {
+{
+   ?z rdfs:subClassOf ?y
+   ?x <http://www.w3.org/2000/01/rdf-schema#domain> ?y . 
+   ?x rdfs:label ?label .
+   FILTER regex(str(?label), "accesible", "i")
+}UNION{
+   ?z rdfs:subClassOf ?y
+   ?x <http://www.w3.org/2000/01/rdf-schema#domain> ?y . 
+   ?x rdfs:label ?label .
+   FILTER regex(str(?label), "tipo de accesibilidad", "i")
 
-   ?x ?y ?z
-
+}
 }
 
 #Results
