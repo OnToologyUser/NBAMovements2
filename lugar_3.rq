@@ -9,7 +9,7 @@ WHERE {
 #Number of results
  > 1
 #Type of the results
-literal
+Literal
 #List of results
 poblacion
 #Priority
