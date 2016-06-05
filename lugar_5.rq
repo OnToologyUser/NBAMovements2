@@ -1,5 +1,5 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-ASK  { ?x <http://www.w3.org/2002/07/owl#ObjectProperty>  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#tipoAccesibilidad> }
+ASK  { ?x <http://www.w3.org/2002/07/owl#ObjectProperty>  ?y }
 #Results
 #Number of results
  1
