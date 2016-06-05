@@ -1,16 +1,16 @@
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT  ?comment ?label
+SELECT   ?label
 WHERE { 
         <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica> rdfs:label ?label 
      } 
 
 #Results
 #Number of results
- > 5
+ > 1
 #Type of the results
-uri, literal, literal, literal
+literal
 #List of results
-http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI, xsd:anyURI, xsd:anyURI
+poblacion
 #Priority
 1
