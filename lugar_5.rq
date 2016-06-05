@@ -1,7 +1,8 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?class
+SELECT   ?subclass
 WHERE { 
-        ?class rdfs:label "tipo de accesibilidad" 
+        ?subclass rdfs:subClassOf  <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#LugarInteresTuristico> .
+        ?subclass rdfs:label "tipo de accesibilidad" 
      } 
 
 #Results
