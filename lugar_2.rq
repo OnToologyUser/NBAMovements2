@@ -9,7 +9,7 @@ WHERE {
 #Number of results
  > 5
 #Type of the results
-uri, literal, literal, literal
+URIRef, Literal, Literal, Literal
 #List of results
 http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI, xsd:anyURI, xsd:anyURI
 #Priority
