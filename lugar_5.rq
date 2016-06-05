@@ -1,8 +1,7 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT   ?class
 WHERE { 
-        ?class rdfs:label "tipo de accesibilidad" .
-        ?class rdfs:label "accesible" 
+        ?class rdfs:label "tipo de accesibilidad" 
      } 
 
 #Results
