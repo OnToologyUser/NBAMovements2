@@ -10,6 +10,6 @@ WHERE {
 #Number of results
  > 1
 #Type of the results
-literal, literal
+Literal, URIRef
 #List of results
 itinerario, http://schema.org/TouristAttraction
