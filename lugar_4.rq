@@ -1,0 +1,14 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT   ?label ?sub
+WHERE { 
+        <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario> rdfs:label ?label .
+        ?sub rdfs:subClassOf <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Itinerario>
+     } 
+
+#Results
+#Number of results
+ > 1
+#Type of the results
+literal, literal
+#List of results
+poblacion, poblacion
