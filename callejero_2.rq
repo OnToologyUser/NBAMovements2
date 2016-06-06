@@ -1,16 +1,17 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 
-SELECT ?prop ?label
+SELECT ?label1 ?label2
 WHERE {
 
-   ?prop ?label  <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  .
+   ?label1 ?prop1 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  .
+   ?label2 ?prop2  <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  
 }
 
 #Results
 #Number of results
  >1
 #Type of the results
-Literal
+Literal, Literal
 #List of results
 http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#numeroInicioTramo
