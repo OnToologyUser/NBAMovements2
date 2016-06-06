@@ -12,6 +12,8 @@ import rdflib
 import types
 
 def main():
+	global flag
+	flag = False
 	#GitHub authentication
 	client_token = os.environ['github_token']
 	g = Github(client_token)
@@ -67,7 +69,7 @@ def main():
 	    		s+= '\n'
 	    	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
 	    else:
-	    	flag, s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,priority,i,s,repo)
+	    	s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,priority,i,s,repo)
 	  print flag
 	  if flag == True:
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
@@ -144,7 +146,7 @@ def read_query(req_file):
 ##Function to check if the results obtained by the system are correct
  
 def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file,priority,i,s,repo):
- 	flag = False
+ 	#flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
@@ -236,7 +238,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
 	#if there are errors
 	#if len(error_list) > 0:
  	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
- 	return flag, s,i
+ 	return s,i
      
 ##Function to create issues labels in github
 
