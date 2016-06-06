@@ -1,7 +1,7 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 
-SELECT ?label
+SELECT ?prop ?label
 WHERE {
 
    <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia> ?prop ?label .
