@@ -1,19 +1,16 @@
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?y1 ?y2
-WHERE{
-	{
-	<http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via> ?x1 ?y1 . 
-	 FILTER regex(str(?label), "año", "i")
-	}UNION{<http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via> ?x2 ?y2 . 
-	 FILTER regex(str(?label), "barrio", "i")}
-
-}
+PREFIX escjr: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo­infraestructuras/callejero#>
+PREFIX esadm: <http://vocab.linkeddata.es/datosabiertos/def/sector­publico/territorio#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT DISTINCT ?via ?barrio ?fechaCreacion WHERE{
+	?via a escjr:Via .
+	?via dcterms:date ?fechaCreacion .
+	?via esadm:barrio ?barrio
+} ORDER BY DESC(?fechaCreacion)
 
 #Results
 #Number of results
- 1
+ >1
 #Type of the results
-Boolean
+Literal, Literal, Literal
 #List of results
-true
+
