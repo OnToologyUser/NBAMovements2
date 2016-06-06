@@ -133,8 +133,11 @@ def read_query(req_file):
 
         results_list_type.append(row_element_type)
         results_list.append(row_element)
-    print 'sssss'
+    print req_file
+    print '==============='
     print  results_list
+    print '=============='
+   
     req.close()
     return results_list,results_list_type, num_res,list_type_res,list_aux,priority
     
@@ -180,8 +183,11 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     	 	 	flag = True
     	 	
         #check if the user examples are contained in the results 
+        print '----SAMPLES----'
         isinside = False
         for result in list_results_user:
+        		print result
+        		print list_elements_results
              		for elem in list_elements_results:
         			if all(x in result for x in elem):
 					isinside = True
@@ -207,7 +213,6 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
            	for elem in result: 
            		#tag = list(elem.iter())[1].tag
         		#list_tags.append(tag)
-        		print type_res[j]
         		if not type_res[j]  in elem:
     	   			if len(error_list) == 0:
     	   				error_list.append("type")
