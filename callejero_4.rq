@@ -1,0 +1,14 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+ASK {?x ?y <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Portal> . 
+  FILTER regex(str(?x), "tipo", "i")
+}
+
+
+#Results
+#Number of results
+ 1
+#Type of the results
+Boolean
+#List of results
+true
