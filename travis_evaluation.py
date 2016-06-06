@@ -13,8 +13,7 @@ import types
 
 
 def main():
-	global flag
-	flag = False
+	global flag = False
 	#GitHub authentication
 	client_token = os.environ['github_token']
 	g = Github(client_token)
@@ -42,25 +41,6 @@ def main():
 	    #Reading the results given by the user
 	    list_elements_results,list_elements_results_type, num_res,type_res,list_results_user,priority = read_query(file)
 
-	    #results_query = results_query.toxml()
-	    #list_elements_results = []
-	    #root = ElementTree.fromstring(results_query)
-	    #Results obtained by the system
-	    #list_results_query = root.findall('{http://www.w3.org/2005/sparql-results#}results/{http://www.w3.org/2005/sparql-results#}result')
-	    # for "ask" queries. The result obtained is only a boolean
-	    #if not list_results_query:
-	    #	for child in root:
-	    #		if child.text is not None: 
-	    #			list_elements_results.append(child.text)
-	    
-	    #list_aux = []
-	    #for result in list_results_query:
-	    #		list_aux = []
-	    #		binds = result.findall('{http://www.w3.org/2005/sparql-results#}binding')
-	    #		for bind in binds:
-	    #			list_aux.append(list(bind.iter())[1].text)
-	    # 		list_elements_results.append(list_aux)
-	    #Checking the results obtained by the system 
 	    if not list_elements_results:
 	    	i += 1
 	    	s += "%d. " % (i) + 'The ontology can not answer to the requirement with ID ' + os.path.splitext(os.path.basename(file))[0].split("_")[1]
@@ -147,7 +127,6 @@ def read_query(req_file):
 ##Function to check if the results obtained by the system are correct
  
 def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file,priority,i,s,repo):
- 	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
