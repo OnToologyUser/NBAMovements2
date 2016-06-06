@@ -191,7 +191,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
              		for elem in list_elements_results:
         			if all(x in result for x in elem):
 					isinside = True
-		 	print isinside
+		 	
     	   		if isinside == False:
     	   			if len(error_list) == 0:
     	   					i += 1
@@ -231,6 +231,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     			flag = True
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(result)+"]\n"
 	  		break
+	print flag
 	#if there are errors
 	#if len(error_list) > 0:
  	#	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])   
