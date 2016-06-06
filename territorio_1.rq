@@ -1,0 +1,14 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT   ?prop ?label
+WHERE { 
+        <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Barrio> ?prop ?label .
+        
+     } 
+
+#Results
+#Number of results
+ > 1
+#Type of the results
+Literal, URIRef
+#List of results
+itinerario, http://schema.org/TouristAttraction
