@@ -147,7 +147,7 @@ def read_query(req_file):
 ##Function to check if the results obtained by the system are correct
  
 def checking_results(num_res,type_res, list_elements_results, list_elements_results_type, list_results_user,file,priority,i,s,repo):
- 	#flag = False
+ 	flag = False
   	error_list = []
     	#check if the number of results are the same that the user expected
     	if  ">" in num_res:
