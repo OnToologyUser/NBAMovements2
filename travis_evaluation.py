@@ -231,6 +231,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
     			flag = True
 	  		s += "    - The results returned by the ontology has not the data type expected by the user. Expected: ["+', '.join(type_res)+"] but was: ["+', '.join(result)+"]\n"
 	  		break
+	print 'flafs'
 	print flag
 	#if there are errors
 	#if len(error_list) > 0:
