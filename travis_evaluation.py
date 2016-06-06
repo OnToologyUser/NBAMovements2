@@ -13,7 +13,8 @@ import types
 
 
 def main():
-	global flag = False
+	global flag 
+	flag = False
 	#GitHub authentication
 	client_token = os.environ['github_token']
 	g = Github(client_token)
