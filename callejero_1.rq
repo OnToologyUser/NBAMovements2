@@ -1,11 +1,14 @@
-PREFIX escjr: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo­infraestructuras/callejero#>
-PREFIX esadm: <http://vocab.linkeddata.es/datosabiertos/def/sector­publico/territorio#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-SELECT DISTINCT ?via ?barrio ?fechaCreacion WHERE{
-	?via a escjr:Via .
-	?via dcterms:date ?fechaCreacion .
-	?via esadm:barrio ?barrio
-} ORDER BY DESC(?fechaCreacion)
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?x1 ?x2
+WHERE{
+	{
+ 	 ?x1 ?y1 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via> . 
+ 	 FILTER regex(str(?y1), "año", "i")
+ 	}UNION{ ?x2 ?y2 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via> . 
+ 	 FILTER regex(str(?y2), "barrio", "i")}
+
+ }
 
 #Results
 #Number of results
