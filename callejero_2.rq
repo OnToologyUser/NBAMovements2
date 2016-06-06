@@ -1,10 +1,13 @@
-PREFIX escjr: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo­infraestructuras/callejero#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?viaTramo WHERE{
-
-{?viaTramo a escjr:Via} UNION {?viaTramo a escjr:TramoVia}
-
-}
+SELECT ?label1 ?label2
+WHERE {
+   {
+      ?label1 ?prop1 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>
+   }UNION{
+     ?label2 ?prop2  <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  
+   }
+ }
 #Results
 #Number of results
  >1
