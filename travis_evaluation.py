@@ -191,6 +191,7 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
              		for elem in list_elements_results:
         			if all(x in result for x in elem):
 					isinside = True
+		 	print inside
     	   		if isinside == False:
     	   			if len(error_list) == 0:
     	   					i += 1
