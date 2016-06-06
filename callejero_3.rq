@@ -1,0 +1,16 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+ASK
+   {
+    <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Portal> rdfs:subClassOf <http://www.geonames.org/ontology#Feature>  
+
+}
+
+#Results
+#Number of results
+ 1
+#Type of the results
+Boolean 
+#List of results
+true
