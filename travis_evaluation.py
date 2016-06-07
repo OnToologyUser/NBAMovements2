@@ -242,7 +242,7 @@ def create_labels(repo):
       flag_unit =True
     elif label.name == "Inference":
       flag_inference =True
-    elif label.name == "Modelling":
+    elif label.name == "Modeling":
       flag_model = True
     elif label.name == "Language":
       flag_lang = True
