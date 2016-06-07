@@ -262,7 +262,7 @@ def create_labels(repo):
    if flag_inference == False:
     repo.create_label("Inference",  "c2e0c6")
    if flag_model == False:
-    repo.create_label("Modelling",  "d4c5f9")
+    repo.create_label("Modeling",  "d4c5f9")
    if flag_lang == False:
     repo.create_label("Language",  "FFCCE5")
    if flag_metadata == False:
@@ -417,7 +417,7 @@ def nicer_oops_output(issues,ont_file,repo):
             if attr_n == '\"P06\"' or attr_n == '\"P19\"' or attr_n == '\"P29\"' or attr_n == '\"P28\"' or attr_n == '\"P31\"' or attr_n == '\"P05\"' or attr_n == '\"P27\"' or attr_n == '\"P15\"' or attr_n == '\"P01\"' or attr_n == '\"P16\"' or attr_n == '\"P18\"' or attr_n == '\"P11\"' or attr_n == '\"P12\"' or attr_n == '\"P30\"':
               inf_pitf.append(desc)
               flag_i = True
-            #modelling pitfalls   
+            #modeling pitfalls   
             elif attr_n == '\"P03\"' or attr_n == '\"P14\"' or attr_n == '\"P24\"' or attr_n == '\"P25\"' or attr_n == '\"P26\"' or attr_n == '\"P17\"' or attr_n == '\"P23\"' or attr_n == '\"P10\"':
                mod_pitf.append(desc)
                flag_mo = True
@@ -483,14 +483,14 @@ def nicer_oops_output(issues,ont_file,repo):
      if len(mod_pitf) > 0:
         #p += "The Pitfalls are the following: \n"
         m_p = p
-        m_p += "modelling. \n"
+        m_p += "modeling. \n"
         m_p += "The Pitfalls are the following: \n"
         for i in range(len(mod_pitf)):
             m_p += "%d. " % (i + 1) + mod_pitf[i] + ". Importance level: "+ mod_pitf_i[i].replace('\"','') + "\n"
             if not mod_pitf_i[i].replace('\"','') in labels:
           	labels.append(str(mod_pitf_i[i].replace('\"','')))
         labels.append("Unit test bug")
-        labels.append("Modelling")
+        labels.append("Modeling")
         create_oops_issue_in_github(repo, ont_file, m_p, labels)
         labels[:] = []
      if len(met_pitf) > 0:
