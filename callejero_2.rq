@@ -12,6 +12,6 @@ WHERE {
 #Number of results
  >1
 #Type of the results
-Literal Literal
+Literal,Literal
 #List of results
 
