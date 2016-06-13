@@ -3,7 +3,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT   ?super ?super2
 WHERE { 
         <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica>  rdfs:subClassOf  ?super .
-       ?super rdfs:domain ?super2  .
+       ?super2 rdfs:domain ?super  .
        
        
        
