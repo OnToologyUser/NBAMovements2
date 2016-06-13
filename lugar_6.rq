@@ -1,0 +1,16 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT   ?super
+WHERE { 
+      ?x rdfs:subClassOf <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#TouristAttraction>  .
+
+     } 
+
+#Results
+#Number of results
+ > 1
+#Type of the results
+URIRef
+#List of results
+http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#EventoCultural
+#Priority
+1
