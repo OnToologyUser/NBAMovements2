@@ -2,7 +2,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT   ?super
 WHERE { 
       ?x rdfs:subClassOf <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#TouristAttraction>  .
-
+      FILTER regex(str(?x), "cultural", "i")
      } 
 
 #Results
