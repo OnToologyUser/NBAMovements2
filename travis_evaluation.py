@@ -271,7 +271,7 @@ def create_labels(repo):
    if flag_critical == False:
     repo.create_label("Critical", "F50511")
    if flag_minor == False:
-    repo.create_label("Minor", "FFFFCC")
+    repo.create_label("Minor", "FFFFCC") 
     
 ##Functions to obtain oops pitfalls and to create github issues
     
