@@ -2,8 +2,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT DISTINCT ?x ?label2
 WHERE {
 {
-   ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
    ?x rdfs:label ?label2
+   ?label rdfs:domain ?x
 }
 }
 
