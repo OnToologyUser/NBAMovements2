@@ -11,6 +11,7 @@ WHERE {
 #Type of the results
 URIRef, Literal
 #List of results
-http://www.w3.org/2001/XMLSchema#anyURI, xsd:anyURI, xsd:anyURI, xsd:anyURI
+http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#EdificioHistorico, siglo
+http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#Monumento, afluencia de p\xc3\xbablico
 #Priority
 1
