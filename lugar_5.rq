@@ -3,13 +3,7 @@ SELECT DISTINCT ?x ?label2
 WHERE {
 {
    ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
-   ?label rdfs:domain ?x  .
    ?x rdfs:label ?label2
-}UNION{
-   ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
-   ?label rdfs:domain ?x  .
-    ?x rdfs:label ?label2
-
 }
 }
 
