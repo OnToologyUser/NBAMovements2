@@ -3,11 +3,11 @@ SELECT DISTINCT ?x
 WHERE {
 {
    ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
-   ?x rdfs:label ?label .
+   ?label rdfs:domain ?x  .
    FILTER regex(str(?label), "accesible", "i")
 }UNION{
    ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
-   ?x rdfs:label ?label .
+   ?label rdfs:domain ?x  .
    FILTER regex(str(?label), "tipo de accesibilidad", "i")
 
 }
