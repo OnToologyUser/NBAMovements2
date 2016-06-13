@@ -1,14 +1,14 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT DISTINCT ?x
+SELECT DISTINCT ?x ?label2
 WHERE {
 {
    ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
    ?label rdfs:domain ?x  .
-   FILTER regex(str(?label), "accesible", "i")
+   ?x rdfs:label ?label2
 }UNION{
    ?x rdfs:subClassOf <http://schema.org/TouristAttraction> .
    ?label rdfs:domain ?x  .
-   FILTER regex(str(?label), "tipo de accesibilidad", "i")
+    ?x rdfs:label ?label2
 
 }
 }
