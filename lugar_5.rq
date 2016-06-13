@@ -1,11 +1,16 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT DISTINCT ?x ?label2 ?label
+SELECT DISTINCT ?x 
 WHERE {
 {
-   ?x rdfs:label ?label2 .
-   ?label rdfs:domain ?x
+   ?x rdfs:label ?label .
+    FILTER regex(str(?label), "accesible", "i")
+ }UNION{
+   ?x rdfs:label ?label .
+   FILTER regex(str(?label), "tipo de accesibilidad", "i")
+ }
 }
-}
+
+
 
 #Results
 #Number of results
