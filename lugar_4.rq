@@ -12,4 +12,4 @@ WHERE {
 #Type of the results
 Literal, URIRef
 #List of results
-itinerario, http://schema.org/TouristAttraction
+Itinerario, http://schema.org/TouristAttraction
