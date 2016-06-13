@@ -1,9 +1,9 @@
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT   ?super ?super2
+SELECT   ?label
 WHERE { 
         <http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#ZonaTuristica>  rdfs:subClassOf  ?super .
-       ?super2 rdfs:domain ?super  .
+       ?label rdfs:domain ?super  .
        
        
        
@@ -13,8 +13,8 @@ WHERE {
 #Number of results
  > 1
 #Type of the results
-Literal
+URIRef
 #List of results
-afluencia de p\xc3\xbablico
+http://vocab.linkeddata.es/datosabiertos/def/turismo/lugar#afluenciaPublico
 #Priority
 1
