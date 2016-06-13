@@ -1,5 +1,5 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT DISTINCT ?x ?label2
+SELECT DISTINCT ?x ?label2 ?label
 WHERE {
 {
    ?x rdfs:label ?label2
