@@ -83,7 +83,8 @@ def read_query(req_file):
     query_aux = query[1].split('#Type of the results')
     num_res = query_aux[0].replace('#Number of results','').replace("\n","")
     type_res = query_aux[1].split('#List of results')[0]
-    list_type_res = type_res.replace("\n","").replace(" ","").split(",")
+    list_type_res = type_res.strip()
+    list_type_res = list_type_res.replace("\n","").split(",")
     results_user = query_aux[1].split('#List of results')[1]
     if '#Priority' in results_user:
     	results_user_prior_split = results_user.split('#Priority')
@@ -110,7 +111,6 @@ def read_query(req_file):
     for row in graph.query(query[0]):
     	row_element = []
     	row_element_type = []
-    	
 	if type(row)  != types.BooleanType:
 	    for element in row: 
 	    		row_element.append(str(element))
