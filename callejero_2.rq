@@ -5,16 +5,20 @@ WHERE {
    {
       
       <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  rdfs:subClassOf ?superC .
-      ?label ?prop1   ?superC
+      ?urip ?prop1   ?superC .
+      ?urip rdfs:label ?label
       
    }UNION{
-     ?label  ?prop <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>    
+     ?urip  ?prop <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>    .
+     ?urip rdfs:label ?label
    } UNION {
    
       <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  rdfs:subClassOf ?superC .
-      ?label ?prop1   ?superC
+      ?urip ?prop1   ?superC .
+      ?urip rdfs:label ?label
    }UNION {
-      ?label  ?prop <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>    
+      ?urip  ?prop <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>   .
+      ?urip rdfs:label ?label
    }
    
    
@@ -24,8 +28,6 @@ WHERE {
 #Number of results
  >0
 #Type of the results
-URIRef
+Literal
 #List of results
-http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#tipoVia
-http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Portal
 
