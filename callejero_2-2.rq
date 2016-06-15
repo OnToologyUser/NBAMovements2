@@ -1,0 +1,19 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?label1 ?label2
+WHERE {
+   {
+      
+   <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  rdfs:subClassOf ?superC
+   ?superC ?prop1  ?label1 
+      
+   }UNION{
+     <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>    ?prop2  ?label2
+   }
+ }
+#Results
+#Number of results
+ >1
+#Type of the results
+Literal,Literal
+#List of results
