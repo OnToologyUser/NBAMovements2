@@ -22,7 +22,10 @@ WHERE {
  }
 #Results
 #Number of results
- >1
+ >0
 #Type of the results
-Literal
+URIRef
 #List of results
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#tipoVia
+http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Portal
+
