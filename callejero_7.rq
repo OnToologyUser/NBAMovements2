@@ -1,0 +1,25 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?label
+WHERE {
+{
+      <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  rdfs:subClassOf ?superC .
+      ?superC ?prop  ?label .
+      FILTER regex(str(?label), "afluencia", "i")
+   } UNION{
+      <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia> ?prop  ?label .
+      FILTER regex(str(?label), "afluencia", "i")
+  }
+}
+
+#Results
+#Number of results
+ >0
+#Type of the results
+Literal
+#List of results
+afluencia de publico
+   
+   
+   
+ 
