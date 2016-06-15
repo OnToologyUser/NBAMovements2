@@ -176,10 +176,10 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
         for result in list_results_user:
         		
              		for elem in list_elements_results:
-             			if result == elem:
-             				print 'equals'
+             			print result
+             			print elem
         			if all(x in result for x in elem):
-        				print 'is inside'
+        				
 					isinside = True
 		 	
     	   		if isinside == False:
