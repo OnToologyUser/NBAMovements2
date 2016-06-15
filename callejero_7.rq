@@ -4,10 +4,10 @@ SELECT ?label
 WHERE {
 {
       <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>  rdfs:subClassOf ?superC .
-      ?superC ?prop  ?label .
+      ?label  ?prop ?superC  .
       FILTER regex(str(?label), "afluencia", "i")
    } UNION{
-      <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia> ?prop  ?label .
+      ?label  ?prop  <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia> .
       FILTER regex(str(?label), "afluencia", "i")
   }
 }
