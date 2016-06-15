@@ -50,6 +50,8 @@ def main():
 	    	else:
 	    		s+= '\n'
 	    	flag = True
+	    	print 'not'
+	    	print s
 	    	#repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])
 	    else:
 	    	s,i = checking_results(num_res,type_res, list_elements_results, list_elements_results_type,list_results_user,file,priority,i,s,repo)
