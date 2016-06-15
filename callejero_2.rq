@@ -3,9 +3,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?label1 ?label2
 WHERE {
    {
-      ?label1 ?prop1 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia>
+      <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#TramoVia> ?prop1  ?label1 
    }UNION{
-     ?label2 ?prop2  <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  
+     <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>    ?prop2  ?label2
    }
  }
 #Results
