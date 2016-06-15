@@ -11,4 +11,4 @@ ASK {?x ?y <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructu
 #Type of the results
 Boolean
 #List of results
-true
+True
