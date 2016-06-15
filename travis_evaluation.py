@@ -88,11 +88,11 @@ def read_query(req_file):
     results_user = query_aux[1].split('#List of results')[1]
     if '#Priority' in results_user:
     	results_user_prior_split = results_user.split('#Priority')
-	print results_user_prior_split[0].replace(" ","").replace('\n','')
+	print results_user_prior_split[0].strip().replace('\n','')
     	#if the requirement has priority
     	#if results_user_prior_split[0].replace(" ","").replace('\n','') != 'false':
 	results_user = results_user_prior_split[0]
-        priority  = results_user_prior_split[1].replace(" ","").replace('\n','')
+        priority  = results_user_prior_split[1].strip().replace('\n','')
     list_elements_result = results_user.replace(" ","").split("\n")
     list_aux = []
     for element in list_elements_result:
