@@ -4,7 +4,7 @@ SELECT ?label1 ?label2
 WHERE {
    {
       
-   <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  rdfs:subClassOf ?superC
+   <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#Via>  rdfs:subClassOf ?superC .
    ?superC ?prop1  ?label1 
       
    }UNION{
