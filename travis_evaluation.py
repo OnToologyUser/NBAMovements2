@@ -116,7 +116,7 @@ def read_query(req_file):
 	    		row_element.append(str(element))
 	    		row_element_type.append(type(element).__name__)
 	else:
-		row_element.append(row)
+		row_element.append(str(row))
 	    	row_element_type.append('Boolean')
 
         results_list_type.append(row_element_type)
