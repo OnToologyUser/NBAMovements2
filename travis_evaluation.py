@@ -175,8 +175,8 @@ def checking_results(num_res,type_res, list_elements_results, list_elements_resu
         isinside = False
         for result in list_results_user:
         		print result
-        		print list_elements_results
              		for elem in list_elements_results:
+             			print elem
         			if all(x in result for x in elem):
 					isinside = True
 		 	
