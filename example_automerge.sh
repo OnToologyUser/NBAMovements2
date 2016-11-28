@@ -1,6 +1,11 @@
 #!/bin/bash -e
 
+printf 'name %s\n' "$TRAVIS_REPO_SLUG"
+repo_temp=$(mktemp -d)
+git clone "https://github.com/$TRAVIS_REPO_SLUG" "$repo_temp"
 
+# shellcheck disable=SC2164
+cd "$repo_temp"
 
 export GIT_COMMITTER_EMAIL='travis@travis'
 export GIT_COMMITTER_NAME='Travis CI'
