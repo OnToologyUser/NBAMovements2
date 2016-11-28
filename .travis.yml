@@ -16,7 +16,6 @@ before_install:
 notifications: 
   on_success: never
   
-before_script: echo "import os; os.environ['github_token'] = '$GH_TOKEN'" >> myconf.py
 
 
 after_success: ./example_automerge.sh
