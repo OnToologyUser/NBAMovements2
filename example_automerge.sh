@@ -12,7 +12,7 @@ export GIT_COMMITTER_NAME='Travis CI'
 
 printf 'Checking out master\n'
 
-git checkout master || exit
+git checkout origin/master || exit
 printf 'Merging %s\n' "$TRAVIS_COMMIT"
 
 git merge "$TRAVIS_COMMIT" || exit
