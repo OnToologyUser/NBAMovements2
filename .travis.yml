@@ -7,6 +7,7 @@ before_install:
  - pip install PyGithub
  - pip install SPARQLWrapper
  - chmod a+x travis_evaluation.py
+ - chmod a+x example_automerge.sh
  - pip install requests
  - pip install oauth2
  - pip install rdflib
