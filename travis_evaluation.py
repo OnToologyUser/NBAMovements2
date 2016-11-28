@@ -61,14 +61,14 @@ def main():
 	  	repo.create_issue('Acceptance test notification', s , labels = ['Acceptance test bug'])     	
 	    	
 	  ###Unit test
-	  ont_files = glob.glob('./*.owl')
-	  print 'Starting unit test with OOPS!...'
-	  for file in ont_files:
-		    f = open(file, 'r')
-		    ont = f.read()
-		    issues_s = get_pitfalls(ont)
-		    close_old_oops_issues_in_github(repo, file)
-		    nicer_oops_output(issues_s,file,repo)
+	 # ont_files = glob.glob('./*.owl')
+	 # print 'Starting unit test with OOPS!...'
+	 # for file in ont_files:
+	#	    f = open(file, 'r')
+	#	    ont = f.read()
+	#	    issues_s = get_pitfalls(ont)
+	#	    close_old_oops_issues_in_github(repo, file)
+	#	    nicer_oops_output(issues_s,file,repo)
 	    
   
 ##Function to read the cqs and the results given by the user
