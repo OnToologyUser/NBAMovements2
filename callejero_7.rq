@@ -15,9 +15,9 @@ ASK{
 #Number of results
  >0
 #Type of the results
-Boolean
+Number
 #List of results
-True
+False
    
    
    
