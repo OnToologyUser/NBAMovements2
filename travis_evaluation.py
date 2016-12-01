@@ -536,7 +536,15 @@ def close_old_oops_issues_in_github(repo, ont_file):
 def close_old_acc_issues_in_github(repo):
     print 'will close old acceptance test issues'
     for i in repo.get_issues(state='open'):
-    	print i.title
+    	print 'title'
+	print i.title
+	print 'body'
+	print i.body
+	print 'comment'
+	print i.comment
+	print 'all'
+	print i
+	
         if i.title == ('Acceptance test notification'):
             i.edit(state='closed')
             
